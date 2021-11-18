@@ -9,6 +9,7 @@
 // const { application } = require("express");
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require('path');
 const dotenv = require('dotenv').config();
 
 // Cross Unblocked File..
@@ -19,23 +20,33 @@ const cors = require('cors');
  */
 const apiRoutes = require("./routes/api");
 const userRoutes = require("./routes/user");
+const uploadRoutes = require('./routes/upload');
 const productBrandRoutes = require('./routes/product-brand');
 const productCategoryRoutes = require('./routes/product-category');
 const productRoutes = require('./routes/product');
+const cartRoutes = require('./routes/cart');
 
 const app = express();
 app.use(cors());
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb', extended: true}));
 
+
+/**
+ * IMAGE UPLOAD STATIC DIR
+ */
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 /**
  * MAIN BASE ROUTER WITH IMPORTED ROUTES
  */
 app.use("/api", apiRoutes);
 app.use("/api/user", userRoutes);
+app.use('/api/upload', uploadRoutes);
 app.use('/api/brand', productBrandRoutes);
 app.use('/api/product-category', productCategoryRoutes);
 app.use('/api/product', productRoutes);
+app.use('/api/cart', cartRoutes);
 
 app.get("/", (req, res) => {
   res.send('<div style="width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center"><h1 style="color: blueviolet; text-transform: uppercase">Startech.com.bd RUNNING...</h1><p style="color: lightcoral">Powered by MOWMITA AHMED</p></div>');

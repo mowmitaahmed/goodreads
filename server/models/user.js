@@ -42,7 +42,7 @@ const userSchema = new Schema(
         },
         username: {
             type: String,
-            required: true
+            required: false
         },
         occupation: {
             type: String,
@@ -57,7 +57,7 @@ const userSchema = new Schema(
         },
         isPhoneVerified: {
             type: Boolean,
-            required: true
+            required: false
         },
         isEmailVerified: {
             type: Boolean,
@@ -65,7 +65,7 @@ const userSchema = new Schema(
         },
         registrationType: {
             type: String,
-            required: true
+            required: false
         },
         registrationAt: {
             type: Date,
@@ -74,7 +74,7 @@ const userSchema = new Schema(
         },
         hasAccess: {
             type: Boolean,
-            required: true
+            required: false
         },
         carts: [{
             type: Schema.Types.ObjectId,

@@ -175,12 +175,9 @@ exports.getAllProducts = async (req, res, next) => {
 
 exports.getSingleProductBySlug = async (req, res, next) => {
   const productSlug = req.params.slug;
-  console.log("Product Slug: ", productSlug);
   try {
     const query = { productSlug: productSlug };
-    console.log("query: ", query);
     const data = await Product.findOne(query);
-    console.log("data", data);
     res.status(200).json({
       data: data,
       message: "Product fetch Successfully!",
@@ -514,12 +511,7 @@ exports.getSpecificProductsByIds = async (req, res, next) => {
       .select(select ? select : "")
       // .populate('attributes')
       .populate("brand")
-      .populate("category")
-      .populate("subCategory")
-      .populate({
-        path: "prices.unit",
-        model: "UnitType",
-      });
+      .populate("category");
 
     res.status(200).json({
       data: data,

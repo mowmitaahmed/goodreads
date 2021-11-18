@@ -18,6 +18,7 @@ router.post('/add-single-product', controller.addSingleProduct);
 router.post('/add-multiple-products', controller.insertManyProduct);
 router.post('/get-all-products', controller.getAllProducts);
 router.get('/get-single-product-by-slug/:slug', controller.getSingleProductBySlug);
+router.post('/get-specific-products-by-ids', controller.getSpecificProductsByIds);
 
 // Modify
 router.put('/edit-product-by-id', controller.updateProductById);

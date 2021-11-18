@@ -94,7 +94,7 @@ exports.userLoginDefault = async (req, res, next) => {
 
     let loadedUser;
     let token;
-    const user = await User.findOne({username: username});
+    const user = await User.findOne({email: username});
     
     if (!user) {
       res.status(200).json({
